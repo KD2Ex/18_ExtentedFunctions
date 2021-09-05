@@ -2,18 +2,13 @@
 using namespace std;
 
 void evendigits(long long n, int& ans) {
-    string str = to_string(n);
-    if (str[1] == '0') {
-        ++ans;
-    }
-    if (((str[0]) - '0') % 2 == 0) {
-        ++ans;
-    }
-    if (str.size() == 1) {
+    if (n == 0) {
         return;
+    } else if ((n % 10) % 2 == 0) {
+        ++ans;
     }
-    str.erase(0, 1);
-    evendigits(stoll(str), ans);
+    n /= 10;
+    evendigits(n, ans);
 }
 
 int main() {
